@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="system">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <link rel="icon" type="image/svg+xml" href="icons/favicon.svg?v=20261015">
+  <link rel="alternate icon" href="icons/favicon.svg?v=20261015">
+  <link rel="apple-touch-icon" href="icons/favicon.svg?v=20261015">
+  <meta name="description" content="Nexus">
+  <title>Nexus</title>
+  <style>
+    /* ==========================================================================
+       Apple Liquid Glass / Frosted Glassmorphism Design System
+       ========================================================================== */
+
+    :root {
+      --font-apple: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
+      --font-mono: ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace;
+      --radius-icon: 14px;
+      --radius-card: 18px;
+      --radius-search: 16px;
+      --radius-pill: 30px;
+      --spring-curve: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --smooth-curve: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Light Mode: Apple Liquid Frosted Glass */
+    :root, [data-theme="light"] {
+      --ambient-1: rgba(99, 102, 241, 0.45);
+      --ambient-2: rgba(244, 63, 94, 0.40);
+      --ambient-3: rgba(14, 165, 233, 0.42);
+      --ambient-4: rgba(168, 85, 247, 0.38);
+      --bg-base: #edf2f9;
+      
+      --glass-surface: rgba(255, 255, 255, 0.32);
+      --glass-surface-hover: rgba(255, 255, 255, 0.52);
+      --glass-dropdown: rgba(255, 255, 255, 0.88);
+      --glass-border: rgba(255, 255, 255, 0.38);
+      --glass-border-hover: rgba(255, 255, 255, 0.65);
+      --glass-shadow: 
+        0 8px 32px 0 rgba(31, 38, 135, 0.08),
+        0 1px 3px rgba(30, 41, 59, 0.03),
+        inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.8),
+        inset 0 -1px 1px 0 rgba(255, 255, 255, 0.25);
+      --glass-shadow-hover: 
+        0 16px 40px -4px rgba(31, 38, 135, 0.16),
+        0 2px 8px rgba(30, 41, 59, 0.05),
+        inset 0 1px 2px 0 rgba(255, 255, 255, 0.95);
+
+      --icon-surface: rgba(255, 255, 255, 0.38);
+      --icon-border: rgba(255, 255, 255, 0.38);
+      --icon-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), inset 0 1px 1px rgba(255, 255, 255, 0.7);
+
+      --text-primary: #1d1d1f;
+      --text-secondary: #5e5e66;
+      --accent: #0071e3;
+      --accent-soft: rgba(0, 113, 227, 0.12);
+
+      color-scheme: light;
+    }
+
+    /* Dark Mode: Apple Smoky Obsidian Frosted Glass */
+    [data-theme="dark"] {
+      --ambient-1: rgba(59, 130, 246, 0.42);
+      --ambient-2: rgba(168, 85, 247, 0.38);
+      --ambient-3: rgba(6, 182, 212, 0.35);
+      --ambient-4: rgba(244, 63, 94, 0.32);
+      --bg-base: #090b11;
+
+      --glass-surface: rgba(22, 27, 44, 0.36);
+      --glass-surface-hover: rgba(32, 40, 66, 0.55);
+      --glass-dropdown: rgba(20, 25, 40, 0.92);
+      --glass-border: rgba(255, 255, 255, 0.09);
+      --glass-border-hover: rgba(255, 255, 255, 0.20);
+      --glass-shadow: 
+        0 12px 36px rgba(0, 0, 0, 0.5),
+        inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.16),
+        inset 0 -1px 1px 0 rgba(0, 0, 0, 0.25);
+      --glass-shadow-hover: 
+        0 20px 48px rgba(0, 0, 0, 0.7),
+        0 0 24px rgba(96, 165, 250, 0.2),
+        inset 0 1px 2px 0 rgba(255, 255, 255, 0.3);
+
+      --icon-surface: rgba(255, 255, 255, 0.06);
+      --icon-border: rgba(255, 255, 255, 0.08);
+      --icon-shadow: 0 4px 16px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.09);
+
+      --text-primary: #f5f5f7;
+      --text-secondary: #a1a1a6;
+      --accent: #2997ff;
+      --accent-soft: rgba(41, 151, 255, 0.2);
+
+      color-scheme: dark;
+    }
+
+    /* System Adaptive Media Query */
+    @media (prefers-color-scheme: dark) {
+      [data-theme="system"] {
+        --ambient-1: rgba(59, 130, 246, 0.42);
+        --ambient-2: rgba(168, 85, 247, 0.38);
+        --ambient-3: rgba(6, 182, 212, 0.35);
+        --ambient-4: rgba(244, 63, 94, 0.32);
+        --bg-base: #090b11;
+
+        --glass-surface: rgba(22, 27, 44, 0.36);
+        --glass-surface-hover: rgba(32, 40, 66, 0.55);
+        --glass-dropdown: rgba(20, 25, 40, 0.92);
+        --glass-border: rgba(255, 255, 255, 0.09);
+        --glass-border-hover: rgba(255, 255, 255, 0.20);
+        --glass-shadow: 
+          0 12px 36px rgba(0, 0, 0, 0.5),
+          inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.16),
+          inset 0 -1px 1px 0 rgba(0, 0, 0, 0.25);
+        --glass-shadow-hover: 
+          0 20px 48px rgba(0, 0, 0, 0.7),
+          0 0 24px rgba(96, 165, 250, 0.2),
+          inset 0 1px 2px 0 rgba(255, 255, 255, 0.3);
+
+        --icon-surface: rgba(255, 255, 255, 0.06);
+        --icon-border: rgba(255, 255, 255, 0.08);
+        --icon-shadow: 0 4px 16px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.09);
+
+        --text-primary: #f5f5f7;
+        --text-secondary: #a1a1a6;
+        --accent: #2997ff;
+        --accent-soft: rgba(41, 151, 255, 0.2);
+
+        color-scheme: dark;
+      }
+    }
+
+    /* ==========================================================================
+       Base & Ambient Background
+       ========================================================================== */
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      font-family: var(--font-apple);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      position: relative;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+
+    /* Apple Dynamic Aurora Ambient Background (Liquid Mesh) */
+    .ambient-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.82;
+      pointer-events: none;
+      animation: float-orb 20s ease-in-out infinite alternate;
+      will-change: transform;
+    }
+
+    .orb-1 {
+      width: 50vw;
+      height: 50vw;
+      max-width: 600px;
+      max-height: 600px;
+      top: -10%;
+      right: 0%;
+      background: var(--ambient-1);
+      animation-duration: 22s;
+    }
+
+    .orb-2 {
+      width: 48vw;
+      height: 48vw;
+      max-width: 550px;
+      max-height: 550px;
+      bottom: -10%;
+      left: 0%;
+      background: var(--ambient-2);
+      animation-duration: 26s;
+      animation-delay: -5s;
+    }
+
+    .orb-3 {
+      width: 42vw;
+      height: 42vw;
+      max-width: 500px;
+      max-height: 500px;
+      top: 20%;
+      left: 20%;
+      background: var(--ambient-3);
+      animation-duration: 19s;
+      animation-delay: -9s;
+    }
+
+    .orb-4 {
+      width: 38vw;
+      height: 38vw;
+      max-width: 460px;
+      max-height: 460px;
+      bottom: 15%;
+      right: 18%;
+      background: var(--ambient-4);
+      animation-duration: 24s;
+      animation-delay: -13s;
+    }
+
+    @keyframes float-orb {
+      0% {
+        transform: translate(0, 0) scale(1);
+      }
+      50% {
+        transform: translate(35px, 25px) scale(1.08);
+      }
+      100% {
+        transform: translate(-30px, -20px) scale(0.94);
+      }
+    }
+
+    /* Main Container (Single-Screen Centered View) */
+    .app-viewport {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 32px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    /* Glass Effect Utility - Apple Liquid Frosted Glass */
+    .glass {
+      background: var(--glass-surface);
+      backdrop-filter: blur(24px) saturate(190%);
+      -webkit-backdrop-filter: blur(24px) saturate(190%);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--glass-shadow);
+      transition: var(--smooth-curve) 0.25s;
+    }
+
+    /* Top Right Floating Theme Switcher (Aligned to Right of 900px Grid) */
+    .top-bar {
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 8px;
+      z-index: 10;
+    }
+
+    .theme-capsule {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 15px;
+      border-radius: var(--radius-pill);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-family: inherit;
+      user-select: none;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    .theme-capsule:hover {
+      color: var(--text-primary);
+      background: var(--glass-surface-hover);
+      border-color: var(--glass-border-hover);
+    }
+
+    .theme-icon {
+      font-size: 13px;
+      line-height: 1;
+    }
+
+    /* ==========================================================================
+       Hero Clock & Date Row with Daily Quote on the Right
+       ========================================================================== */
+
+    .clock-hero {
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 26px;
+      user-select: none;
+      text-align: center;
+    }
+
+    .clock-time {
+      font-size: 58px;
+      font-weight: 300;
+      letter-spacing: -2px;
+      line-height: 1;
+      color: var(--text-primary);
+      font-variant-numeric: tabular-nums;
+      margin-bottom: 8px;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      transition: color 0.3s ease;
+    }
+
+    /* Row containing centered date and right-aligned quote */
+    .clock-subrow {
+      width: 100%;
+      max-width: 900px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 34px;
+    }
+
+    .clock-date {
+      font-size: 14.5px;
+      font-weight: 500;
+      letter-spacing: 0.2px;
+      color: var(--text-secondary);
+      line-height: 1.2;
+    }
+
+    .quote-pill {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      color: var(--text-secondary);
+      font-size: 12.5px;
+      font-weight: 450;
+      cursor: pointer;
+      user-select: none;
+      transition: var(--smooth-curve) 0.25s;
+      max-width: 380px;
+    }
+
+    .quote-pill:hover {
+      background: var(--glass-surface-hover);
+      border-color: var(--glass-border-hover);
+      color: var(--text-primary);
+      transform: translateY(calc(-50% - 1px));
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
+    }
+
+    .quote-text {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: opacity 0.2s ease;
+      letter-spacing: 0.1px;
+    }
+
+    .quote-refresh {
+      font-size: 12px;
+      opacity: 0.55;
+      transition: transform 0.35s ease, opacity 0.2s ease;
+      display: inline-block;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .quote-pill:hover .quote-refresh {
+      opacity: 1;
+      transform: rotate(180deg);
+    }
+
+    /* ==========================================================================
+       Spotlight Search Bar with Search Engine Switcher
+       ========================================================================== */
+
+    .search-wrapper {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto 32px;
+      position: relative;
+      z-index: 20;
+    }
+
+    .search-box-form {
+      display: flex;
+      align-items: center;
+      padding: 0 14px 0 10px;
+      border-radius: var(--radius-search);
+      height: 52px;
+      position: relative;
+    }
+
+    .search-box-form:focus-within {
+      background: var(--glass-surface-hover);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3.5px var(--accent-soft), var(--glass-shadow-hover);
+    }
+
+    /* Search Engine Dropdown Trigger */
+    .engine-trigger {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 11px;
+      border-radius: 10px;
+      background: rgba(0, 0, 0, 0.04);
+      border: 1px solid var(--glass-border);
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-primary);
+      transition: var(--transition);
+      margin-right: 10px;
+      user-select: none;
+      flex-shrink: 0;
+    }
+
+    [data-theme="dark"] .engine-trigger,
+    @media (prefers-color-scheme: dark) {
+      [data-theme="system"] .engine-trigger {
+        background: rgba(255, 255, 255, 0.08);
+      }
+    }
+
+    .engine-trigger:hover {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .engine-icon {
+      font-size: 14px;
+      line-height: 1;
+    }
+
+    .engine-arrow {
+      font-size: 10px;
+      opacity: 0.6;
+      transition: transform 0.2s ease;
+    }
+
+    .engine-trigger[aria-expanded="true"] .engine-arrow {
+      transform: rotate(180deg);
+    }
+
+    /* Engine Dropdown Menu */
+    .engine-dropdown {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 10px;
+      min-width: 175px;
+      padding: 6px;
+      border-radius: 14px;
+      background: var(--glass-dropdown);
+      backdrop-filter: blur(28px) saturate(190%);
+      -webkit-backdrop-filter: blur(28px) saturate(190%);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--glass-shadow-hover);
+      z-index: 50;
+      display: none;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .engine-dropdown.open {
+      display: flex;
+    }
+
+    .engine-option {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: var(--smooth-curve) 0.15s;
+    }
+
+    .engine-option-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .engine-option:hover {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .engine-option.active {
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .engine-check {
+      font-size: 12px;
+      color: var(--accent);
+    }
+
+    /* Search Input */
+    .search-input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      font-size: 14.5px;
+      font-family: inherit;
+      color: var(--text-primary);
+      outline: none;
+      min-width: 0;
+    }
+
+    .search-input::placeholder {
+      color: var(--text-secondary);
+      opacity: 0.8;
+      font-weight: 400;
+    }
+
+    .kbd-shortcut {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 3px 7px;
+      border-radius: 6px;
+      background: rgba(0, 0, 0, 0.04);
+      color: var(--text-secondary);
+      border: 1px solid var(--glass-border);
+      line-height: 1;
+      font-weight: 500;
+      flex-shrink: 0;
+    }
+
+    [data-theme="dark"] .kbd-shortcut,
+    @media (prefers-color-scheme: dark) {
+      [data-theme="system"] .kbd-shortcut {
+        background: rgba(255, 255, 255, 0.08);
+      }
+    }
+
+    .search-clear-btn {
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      cursor: pointer;
+      padding: 4px 6px;
+      font-size: 13px;
+      line-height: 1;
+      border-radius: 50%;
+      display: none;
+      margin-right: 6px;
+      transition: color 0.15s ease;
+    }
+
+    .search-clear-btn:hover {
+      color: var(--text-primary);
+    }
+
+    /* ==========================================================================
+       Apple Squircle App Grid (5 Columns × 3 Rows, Pure Minimalist)
+       Icon + Title Only (No Subtitles or Tags)
+       ========================================================================== */
+
+    .apps-grid-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 18px;
+      width: 100%;
+      max-width: 900px;
+    }
+
+    /* Pure Apple Frosted Glass Tile (Icon + Title Only) */
+    .app-tile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 18px 10px 14px;
+      border-radius: var(--radius-card);
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      user-select: none;
+      position: relative;
+    }
+
+    .app-tile:hover {
+      transform: translateY(-5px) scale(1.02);
+      background: var(--glass-surface-hover);
+      border-color: var(--glass-border-hover);
+      box-shadow: var(--glass-shadow-hover);
+    }
+
+    .app-tile:active {
+      transform: translateY(-2px) scale(0.98);
+      transition-duration: 0.1s;
+    }
+
+    /* Apple Squircle Rounded Floating Icon Dock */
+    .icon-box {
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      background: var(--icon-surface);
+      border: 1px solid var(--icon-border);
+      box-shadow: var(--icon-shadow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 9px;
+      padding: 9px;
+      transition: var(--spring-curve) 0.3s;
+      flex-shrink: 0;
+    }
+
+    .app-tile:hover .icon-box {
+      transform: scale(1.1);
+      background: var(--glass-surface-hover);
+      border-color: var(--glass-border-hover);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12), inset 0 1px 1.5px rgba(255, 255, 255, 0.9);
+    }
+
+    .tile-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.08));
+      transition: var(--spring-curve) 0.3s;
+    }
+
+    .app-tile:hover .tile-img {
+      filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.16));
+    }
+
+    .tile-title {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: -0.2px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 100%;
+    }
+
+    /* ==========================================================================
+       Responsive Breakpoints
+       ========================================================================== */
+
+    @media (max-width: 860px) {
+      .search-wrapper {
+        max-width: 560px;
+      }
+      .apps-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+        max-width: 560px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .clock-subrow {
+        flex-direction: column;
+        gap: 8px;
+        min-height: auto;
+      }
+      .quote-pill {
+        position: static;
+        transform: none;
+        max-width: 90vw;
+      }
+      .quote-pill:hover {
+        transform: translateY(-1px);
+      }
+    }
+
+    @media (max-width: 540px) {
+      .app-viewport {
+        padding: 56px 14px 24px;
+      }
+      .top-bar {
+        margin-bottom: 12px;
+      }
+      .theme-capsule {
+        font-size: 11.5px;
+        padding: 5px 12px;
+      }
+      .clock-hero {
+        margin-bottom: 18px;
+      }
+      .clock-time {
+        font-size: 42px;
+        margin-bottom: 6px;
+      }
+      .clock-date {
+        font-size: 12.5px;
+      }
+      .quote-pill {
+        font-size: 11.5px;
+        padding: 4px 10px;
+      }
+      .search-wrapper {
+        margin-bottom: 20px;
+        max-width: 100%;
+      }
+      .apps-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        max-width: 100%;
+      }
+      .app-tile {
+        padding: 14px 6px 10px;
+        border-radius: 14px;
+      }
+      .icon-box {
+        width: 44px;
+        height: 44px;
+        border-radius: 14px;
+        padding: 7px;
+        margin-bottom: 6px;
+      }
+      .tile-title {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Ambient Liquid Aurora Gradient Behind Glass -->
+  <div class="ambient-canvas" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="orb orb-4"></div>
+  </div>
+
+  <div class="app-viewport">
+    <!-- Top Bar: Theme Switcher (Right-Aligned to 900px Grid) -->
+    <header class="top-bar">
+      <button type="button" class="theme-capsule glass" id="themeToggleBtn" aria-label="切换颜色模式" title="点击切换：系统自适应 / 暗黑模式 / 亮色模式">
+        <span class="theme-icon" id="themeIcon">💻</span>
+        <span id="themeLabel">系统自适应</span>
+      </button>
+    </header>
+
+    <!-- Main Content -->
+    <main style="width: 100%;">
+      <!-- Hero Clock & Date with Daily Quote on the Date Row -->
+      <section class="clock-hero">
+        <div class="clock-time" id="clockTime">12:00</div>
+        <div class="clock-subrow">
+          <div class="clock-date" id="clockDate">10月15日 星期四</div>
+          <div class="quote-pill glass" id="quotePill" title="点击切换每日一句 (每日自动更新)">
+            <span class="quote-text" id="quoteText">Дорогу осилит идущий. · 千里之行，始于足下。</span>
+            <span class="quote-refresh">↻</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Spotlight Search with Multi-Engine Selector -->
+      <section class="search-wrapper">
+        <form id="searchForm" class="search-box-form glass" role="search" onsubmit="handleSearchSubmit(event)">
+          <!-- Engine Trigger Button -->
+          <div class="engine-trigger" id="engineTrigger" aria-expanded="false">
+            <span class="engine-icon" id="currentEngineIcon">🔍</span>
+            <span id="currentEngineName">Google</span>
+            <span class="engine-arrow">▼</span>
+          </div>
+
+          <!-- Engine Dropdown Menu -->
+          <div class="engine-dropdown glass" id="engineDropdown">
+            <!-- Rendered by JS -->
+          </div>
+
+          <!-- Search Input (Clean & Prompt-Free) -->
+          <input type="text" id="searchInput" class="search-input" autocomplete="off" spellcheck="false" autofocus>
+          <button type="button" id="searchClearBtn" class="search-clear-btn" aria-label="清空搜索">✕</button>
+        </form>
+      </section>
+
+      <!-- Apps Section: 5x3 Minimalist Launchpad Grid -->
+      <section class="apps-grid-wrapper">
+        <div class="apps-grid" id="appsGrid"></div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    /**
+     * =========================================================================
+     * 1. 搜索引擎配置 (保留 Google、谷歌翻译、Yandex)
+     * =========================================================================
+     */
+    const ENGINES = [
+      { 
+        id: 'google', 
+        name: 'Google', 
+        icon: '🔍', 
+        buildUrl: (q) => `https://www.google.com/search?q=${encodeURIComponent(q)}`
+      },
+      { 
+        id: 'translate', 
+        name: '谷歌翻译', 
+        icon: '🌐', 
+        buildUrl: (q) => `https://translate.google.com/?sl=ru&tl=zh-CN&text=${encodeURIComponent(q)}&op=translate`
+      },
+      { 
+        id: 'yandex', 
+        name: 'Yandex', 
+        icon: '🇷🇺', 
+        buildUrl: (q) => `https://yandex.com/search/?text=${encodeURIComponent(q)}`
+      }
+    ];
+
+    let currentEngineId = localStorage.getItem('nav_search_engine_v3') || 'google';
+
+    function getEngine(id) {
+      return ENGINES.find(e => e.id === id) || ENGINES[0];
+    }
+
+    const engineTrigger = document.getElementById('engineTrigger');
+    const engineDropdown = document.getElementById('engineDropdown');
+    const currentEngineIcon = document.getElementById('currentEngineIcon');
+    const currentEngineName = document.getElementById('currentEngineName');
+    const searchInput = document.getElementById('searchInput');
+    const searchClearBtn = document.getElementById('searchClearBtn');
+
+    function updateEngineUI() {
+      const engine = getEngine(currentEngineId);
+      currentEngineIcon.textContent = engine.icon;
+      currentEngineName.textContent = engine.name;
+      searchInput.placeholder = '';
+      searchInput.removeAttribute('placeholder');
+      localStorage.setItem('nav_search_engine_v3', currentEngineId);
+
+      // Render dropdown items
+      engineDropdown.innerHTML = '';
+      ENGINES.forEach(eng => {
+        const item = document.createElement('div');
+        item.className = `engine-option ${eng.id === currentEngineId ? 'active' : ''}`;
+        item.innerHTML = `
+          <div class="engine-option-left">
+            <span>${eng.icon}</span>
+            <span>${eng.name}</span>
+          </div>
+          ${eng.id === currentEngineId ? '<span class="engine-check">✓</span>' : ''}
+        `;
+        item.addEventListener('click', (e) => {
+          e.stopPropagation();
+          currentEngineId = eng.id;
+          updateEngineUI();
+          engineDropdown.classList.remove('open');
+          engineTrigger.setAttribute('aria-expanded', 'false');
+          searchInput.focus();
+        });
+        engineDropdown.appendChild(item);
+      });
+    }
+
+    engineTrigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = engineDropdown.classList.toggle('open');
+      engineTrigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!engineTrigger.contains(e.target) && !engineDropdown.contains(e.target)) {
+        engineDropdown.classList.remove('open');
+        engineTrigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Handle Search Submit
+    function handleSearchSubmit(e) {
+      if (e) e.preventDefault();
+      const q = searchInput.value.trim();
+      if (!q) return;
+
+      // 如果输入的是完整网址，直接跳转
+      if (/^https?:\/\//i.test(q) || /^[\w-]+\.(com|cn|org|net|io|me|ai|bz|ru)(\/.*)?$/i.test(q)) {
+        const targetUrl = /^https?:\/\//i.test(q) ? q : `https://${q}`;
+        window.open(targetUrl, '_blank', 'noopener,noreferrer');
+        return;
+      }
+
+      // 否则使用当前选择的引擎检索
+      const engine = getEngine(currentEngineId);
+      const targetUrl = engine.buildUrl(q);
+      window.open(targetUrl, '_blank', 'noopener,noreferrer');
+    }
+
+    // Input listeners
+    searchInput.addEventListener('input', (e) => {
+      searchClearBtn.style.display = e.target.value ? 'inline-flex' : 'none';
+    });
+
+    searchClearBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      searchClearBtn.style.display = 'none';
+      searchInput.focus();
+    });
+
+    updateEngineUI();
+
+    /**
+     * =========================================================================
+     * 2. 纯净站点清单 (5x3 矩阵，无任何副标题和标签，纯图标+名称)
+     * =========================================================================
+     */
+    const SITES = [
+      // 第一行 (5个): 核心办公 / AI / 代码 / 学术排版
+      {
+        name: "Mail.ru",
+        url: "https://mail.ru/",
+        icon: "icons/mail_ru.png"
+      },
+      {
+        name: "ChatGPT",
+        url: "https://chatgpt.com/",
+        icon: "icons/chatgpt-official.svg?v=20261015"
+      },
+      {
+        name: "Grok",
+        url: "https://grok.com/",
+        icon: "icons/grok.svg?v=20261015"
+      },
+      {
+        name: "GitHub",
+        url: "https://github.com/",
+        icon: "icons/github.png"
+      },
+      {
+        name: "Overleaf",
+        url: "https://www.overleaf.com/",
+        icon: "icons/overleaf.png"
+      },
+
+      // 第二行 (5个): 常用邮箱 / 笔记知识库 / 全球视频 / 哔哩哔哩
+      {
+        name: "163 邮箱",
+        url: "https://mail.163.com/",
+        icon: "icons/mail163.png"
+      },
+      {
+        name: "Gmail",
+        url: "https://mail.google.com/",
+        icon: "icons/gmail.svg"
+      },
+      {
+        name: "Notion",
+        url: "https://www.notion.so/zh-cn",
+        icon: "icons/notion.png"
+      },
+      {
+        name: "YouTube",
+        url: "https://youtube.com/",
+        icon: "icons/youtube.png"
+      },
+      {
+        name: "哔哩哔哩",
+        url: "https://www.bilibili.com/",
+        icon: "icons/bilibili-official.svg?v=20261015"
+      },
+
+      // 第三行 (5个): 俄语听力 / 电子书库 / 专业流程图 / PDF 处理 / 临时邮箱
+      {
+        name: "3ears",
+        url: "https://3ears.com/",
+        icon: "icons/ears.png"
+      },
+      {
+        name: "Z-Lib",
+        url: "https://z-library.bz/",
+        icon: "icons/zlib.png"
+      },
+      {
+        name: "Draw.io",
+        url: "https://app.diagrams.net/",
+        icon: "icons/dia.png"
+      },
+      {
+        name: "SmallPDF",
+        url: "https://smallpdf.com/cn",
+        icon: "icons/smallpdf.png"
+      },
+      {
+        name: "Temp Mail",
+        url: "https://temp-mail.org/zh/",
+        icon: "icons/tempmail.png"
+      }
+    ];
+
+    function createTile(site) {
+      const a = document.createElement('a');
+      a.className = 'app-tile glass';
+      a.href = site.url;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      a.setAttribute('aria-label', site.name);
+
+      a.innerHTML = `
+        <div class="icon-box">
+          <img class="tile-img" src="${site.icon}" alt="" loading="lazy">
+        </div>
+        <div class="tile-title">${site.name}</div>
+      `;
+      return a;
+    }
+
+    function renderApps() {
+      const container = document.getElementById('appsGrid');
+      container.innerHTML = '';
+      SITES.forEach(site => container.appendChild(createTile(site)));
+    }
+
+    renderApps();
+
+    /**
+     * =========================================================================
+     * 3. Apple 主题切换系统 (系统自适应 + 循环切换)
+     * =========================================================================
+     */
+    const THEME_CYCLE = ['system', 'dark', 'light'];
+    const THEME_CONFIG = {
+      system: { icon: '💻', label: '跟随系统' },
+      dark:   { icon: '🌙', label: '暗黑模式' },
+      light:  { icon: '☀️', label: '亮色模式' }
+    };
+
+    let currentTheme = localStorage.getItem('apple_nav_theme') || 'system';
+
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      const conf = THEME_CONFIG[theme] || THEME_CONFIG.system;
+      document.getElementById('themeIcon').textContent = conf.icon;
+      document.getElementById('themeLabel').textContent = conf.label;
+      localStorage.setItem('apple_nav_theme', theme);
+    }
+
+    document.getElementById('themeToggleBtn').addEventListener('click', () => {
+      const idx = THEME_CYCLE.indexOf(currentTheme);
+      currentTheme = THEME_CYCLE[(idx + 1) % THEME_CYCLE.length];
+      applyTheme(currentTheme);
+    });
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+      if (currentTheme === 'system') {
+        applyTheme('system');
+      }
+    });
+
+    applyTheme(currentTheme);
+
+    // 全局快捷键: 按 / 或 ⌘K 聚焦搜索框, ESC 清空并失焦
+    window.addEventListener('keydown', (e) => {
+      if (document.activeElement === searchInput) {
+        if (e.key === 'Escape') {
+          searchInput.value = '';
+          searchClearBtn.style.display = 'none';
+          searchInput.blur();
+        }
+        return;
+      }
+
+      if (e.key === '/' || ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k')) {
+        e.preventDefault();
+        searchInput.focus();
+        searchInput.select();
+      }
+    });
+
+    /**
+     * =========================================================================
+     * 4. 实时时钟、本地日期与精选每日金句 (纯俄汉双语，按日固定不跳变)
+     * =========================================================================
+     */
+    const CURATED_QUOTES = [
+      "Дорогу осилит идущий. · 千里之行，始于足下。",
+      "Век живи — век учись. · 活到老，学到老。",
+      "Терпение и труд всё перетрут. · 功到自然成。",
+      "Семь раз отмерь, один раз отрежь. · 三思而后行。",
+      "Повторение — мать учения. · 温故而知新。",
+      "Знание — сила. · 知识就是力量。",
+      "Ученье — свет, а неученье — тьма. · 学习是光，无知是暗。",
+      "Счастье сопутствует смелым. · 勇者常得幸运相伴。",
+      "Красота спасёт мир. · 美将拯救世界。（陀思妥耶夫斯基）",
+      "Всё проходит, и это пройдёт. · 凡事终将过去，一切归于从容。",
+      "Тише едешь — дальше будешь. · 宁静致远，行稳至极。",
+      "Лучше поздно, чем никогда. · 亡羊补牢，未为迟也。",
+      "Корень учения горек, но плод его сладок. · 根苦实甘，厚积薄发。",
+      "Глаза боятся, а руки делают. · 心怀敬畏，手作不辍。",
+      "Утро вечера мудренее. · 晨光清明，拂晓自见分晓。",
+      "Под лежачий камень вода не течёт. · 水不流于卧石，动则自有所成。",
+      "Капля камень точит. · 滴水穿石。",
+      "Человек создан для счастья, как птица для полёта. · 人之向往幸福，如飞鸟之于苍穹。（柯罗连科）",
+      "Если хочешь быть счастливым — будь им. · 若欲享幸福，当下便自得。（科兹玛·普鲁特科夫）",
+      "Свет побеждает тьму. · 光明终克幽暗。",
+      "Каждый день — это новая жизнь. · 每一天，皆是崭新人生的开端。",
+      "Мастерство приходит с практикой. · 熟能生巧，精诚所至。",
+      "Время — великий учитель. · 光阴是最高明的导师。",
+      "Не откладывай на завтра то, что можно сделать сегодня. · 今日事，今日毕。",
+      "В здоровом теле — здоровый дух. · 身心泰和，神采奕然。",
+      "Жизнь измеряется не годами, а делами. · 人生以立身行事论，非以岁月长短量。",
+      "Смелость города берёт. · 勇毅者，百关莫御。",
+      "Через тернии к звёздам. · 历经荆棘，终抵繁星。",
+      "Мир открывается тем, кто идёт вперёд. · 广阔世界，属于向前奔赴之人。",
+      "Истинное величие заключается в простоте. · 真正的伟大，蕴于简朴之中。（托尔斯泰）"
+    ];
+
+    const clockTime = document.getElementById('clockTime');
+    const clockDate = document.getElementById('clockDate');
+    const quoteText = document.getElementById('quoteText');
+    const quotePill = document.getElementById('quotePill');
+
+    function updateClock() {
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      clockTime.textContent = `${hours}:${minutes}`;
+
+      const options = { month: 'numeric', day: 'numeric', weekday: 'long' };
+      const dateStr = now.toLocaleDateString('zh-CN', options);
+      clockDate.textContent = dateStr;
+    }
+
+    updateClock();
+    setInterval(updateClock, 1000);
+
+    // 每日一句稳定算法：以本地年月日（如 20261015）计算固定索引，确保全天刷新页面绝对不变
+    function getTodayQuoteIndex() {
+      const now = new Date();
+      const dateVal = now.getFullYear() * 10000 + (now.getMonth() + 1) * 100 + now.getDate();
+      return dateVal % CURATED_QUOTES.length;
+    }
+
+    let currentQuoteIdx = getTodayQuoteIndex();
+    quoteText.textContent = CURATED_QUOTES[currentQuoteIdx];
+
+    function nextQuote() {
+      quoteText.style.opacity = '0';
+      setTimeout(() => {
+        currentQuoteIdx = (currentQuoteIdx + 1) % CURATED_QUOTES.length;
+        quoteText.textContent = CURATED_QUOTES[currentQuoteIdx];
+        quoteText.style.opacity = '1';
+      }, 200);
+    }
+
+    quotePill.addEventListener('click', nextQuote);
+  </script>
+</body>
+</html>

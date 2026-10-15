@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <!-- Liquid Apple Aurora Gradient -->
+    <linearGradient id="fav-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0071E3"/>
+      <stop offset="55%" stop-color="#5856D6"/>
+      <stop offset="100%" stop-color="#AF52DE"/>
+    </linearGradient>
+    <!-- Inner Frost Highlight -->
+    <linearGradient id="fav-glass" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <!-- iOS / macOS Squircle Background -->
+  <rect x="2" y="2" width="60" height="60" rx="15" fill="url(#fav-bg)"/>
+  <rect x="2" y="2" width="60" height="60" rx="15" fill="url(#fav-glass)" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+
+  <!-- Native Minimalist 4-Point Compass / Nova Star Emblem -->
+  <g filter="url(#shadow)" transform="translate(32, 32)">
+    <!-- Central Outer Star -->
+    <path d="M0 -19 C1 -8 8 -1 19 0 C8 1 1 8 0 19 C-1 8 -8 1 -19 0 C-8 -1 -1 -8 0 -19 Z" fill="#ffffff" opacity="0.96"/>
+    <!-- Subtle Inner Core -->
+    <circle cx="0" cy="0" r="3.2" fill="url(#fav-bg)"/>
+  </g>
+</svg>
